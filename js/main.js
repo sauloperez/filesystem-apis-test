@@ -84,6 +84,7 @@
 
 					// Read the file we just created
 					readFile(fileEntry.name);
+					query();
 				};
 
 				fileWriter.onerror = function(e) {
@@ -110,20 +111,26 @@
 
 				reader.onloadend = function(e) {
 					console.log('Read completed');
-					console.log(this.result);
+					console.log(this.result);		
 
-					// Request storage usage and capacity left
-					window.webkitStorageInfo.queryUsageAndQuota(webkitStorageInfo.storageMode, function(used, remaining) {
-					  console.log("Used quota: " + used + ", remaining quota: " + remaining);
-					}, function(e) {
-					  console.log('Error', e); 
-					});
+					query();			
 				};
 
 				reader.readAsText(file);
 			}, errorHandler);
 		}, errorHandler);
 	};
+
+	// Request storage usage and capacity left
+	var query = function() {
+		if (navigator.webkitPersistentStorage && mode == PERSISTENT) {
+			navigator.webkitPersistentStorage.queryUsageAndQuota(function(used, remaining) {
+			  console.log("Used quota: " + used + ", remaining quota: " + remaining);
+			}, function(e) {
+			  console.log('Error', e); 
+			});
+		}
+	}
 
 	// Start it up!
 	initFS(storageSize, storageMode);
