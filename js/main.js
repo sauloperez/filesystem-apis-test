@@ -81,6 +81,9 @@
 					console.log('isFile: ' + fileEntry.isFile);
 					console.log('name: ' + fileEntry.name);
 					console.log('fullPath: ' + fileEntry.fullPath);
+
+					// Read the file we just created
+					readFile(name);
 				};
 
 				fileWriter.onerror = function(e) {
@@ -92,9 +95,6 @@
 				fileWriter.write(blob);
 				
  			}, errorHandler);
-
-			// Read the file we just created
-			readFile(name);
 
 		}, errorHandler);
 	};
