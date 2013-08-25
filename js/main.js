@@ -2,8 +2,9 @@
 	'use strict';
 
 	// Lets define some constants
-	var storageSize = 1*1024; // 1MB
-	var storageMode = PERSISTENT;
+	var storageSize = 1*1024,
+			storageMode = PERSISTENT,
+			testFile = 'file.txt';
 
 	// Reference to the FileSystem object
 	var _fs;
@@ -66,7 +67,7 @@
 
 	var onInitFS = function(fs) {
 		_fs = fs;
-		writeFile('test.txt');		
+		writeFile(testFile);		
 	};
 
 	var writeFile = function(filename) {
@@ -108,6 +109,7 @@
 				var reader = new FileReader();
 
 				reader.onloadend = function(e) {
+					console.log('Read completed');
 					console.log(this.result);
 				};
 
