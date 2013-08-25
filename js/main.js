@@ -123,7 +123,7 @@
 
 	// Request storage usage and capacity left
 	var query = function() {
-		if (navigator.webkitPersistentStorage && mode == PERSISTENT) {
+		if (navigator.webkitPersistentStorage && storageMode == PERSISTENT) {
 			navigator.webkitPersistentStorage.queryUsageAndQuota(function(used, remaining) {
 			  console.log("Used quota: " + used + ", remaining quota: " + remaining);
 			}, function(e) {
