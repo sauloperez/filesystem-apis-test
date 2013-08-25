@@ -111,9 +111,7 @@
 
 				reader.onloadend = function(e) {
 					console.log('Read completed');
-					console.log(this.result);		
-
-					query();			
+					console.log(this.result);	
 				};
 
 				reader.readAsText(file);
