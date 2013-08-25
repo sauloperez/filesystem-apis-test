@@ -83,7 +83,7 @@
 					console.log('fullPath: ' + fileEntry.fullPath);
 
 					// Read the file we just created
-					readFile(name);
+					readFile(fileEntry.name);
 				};
 
 				fileWriter.onerror = function(e) {
@@ -111,6 +111,13 @@
 				reader.onloadend = function(e) {
 					console.log('Read completed');
 					console.log(this.result);
+
+					// Request storage usage and capacity left
+					window.webkitStorageInfo.queryUsageAndQuota(webkitStorageInfo.storageMode, function(used, remaining) {
+					  console.log("Used quota: " + used + ", remaining quota: " + remaining);
+					}, function(e) {
+					  console.log('Error', e); 
+					});
 				};
 
 				reader.readAsText(file);
