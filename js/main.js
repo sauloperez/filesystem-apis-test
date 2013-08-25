@@ -70,7 +70,7 @@
 	};
 
 	var writeFile = function(filename) {
-		_fs.root.getFile(filename, {create: true, exclusive: true}, function(fileEntry) {
+		_fs.root.getFile(filename, {create: true, exclusive: false}, function(fileEntry) {
 			
 			// Create a FileWriter object to write within the FileEntry
 			fileEntry.createWriter(function(fileWriter) {
