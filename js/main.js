@@ -2,7 +2,7 @@
 	'use strict';
 
 	// Lets define some constants
-	var storageSize = 1*1024*1024; // 1MB
+	var storageSize = 1*1024; // 1MB
 	var storageMode = PERSISTENT;
 
 	// Reference to the FileSystem object
